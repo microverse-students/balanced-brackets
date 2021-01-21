@@ -1,41 +1,33 @@
-require './challenge.rb'
+require "base64"
 
-RSpec.describe 'UnitTests' do
-  
-  it 'balanced_parenthesis_and_square_brackets' do
-    # Failure message: 
-    # Method called: balanced_brackets?('(hello)[world]')
-    expect(balanced_brackets?('(hello)[world]')).to be true
-  end
-  
-  it 'balanced_brackets' do
-    # Failure message: 
-    # Method called: balanced_brackets?('{}')
-    expect(balanced_brackets?('{}')).to be true
-  end
-  
-  it 'nested_balanced_brackets' do
-    # Failure message: 
-    # Method called: balanced_brackets?('[({}{}{})([])]')
-    expect(balanced_brackets?('[({}{}{})([])]')).to be true
-  end
 
-  it 'unbalanced_with_no_closing' do
-    # Failure message: 
-    # Method called: balanced_brackets?('(hello')
-    expect(balanced_brackets?('(hello')).to be false
-  end
+encoded_data = "cmVxdWlyZSAnLi9jaGFsbGVuZ2UucmInCgpSU3BlYy5kZXNjcmliZSAnVW5p
+dFRlc3RzJyBkbwogIAogIGl0ICdiYWxhbmNlZF9wYXJlbnRoZXNpc19hbmRf
+c3F1YXJlX2JyYWNrZXRzJyBkbwogICAgIyBGYWlsdXJlIG1lc3NhZ2U6IAog
+ICAgIyBNZXRob2QgY2FsbGVkOiBiYWxhbmNlZF9icmFja2V0cz8oJyhoZWxs
+bylbd29ybGRdJykKICAgIGV4cGVjdChiYWxhbmNlZF9icmFja2V0cz8oJyho
+ZWxsbylbd29ybGRdJykpLnRvIGJlIHRydWUKICBlbmQKICAKICBpdCAnYmFs
+YW5jZWRfYnJhY2tldHMnIGRvCiAgICAjIEZhaWx1cmUgbWVzc2FnZTogCiAg
+ICAjIE1ldGhvZCBjYWxsZWQ6IGJhbGFuY2VkX2JyYWNrZXRzPygne30nKQog
+ICAgZXhwZWN0KGJhbGFuY2VkX2JyYWNrZXRzPygne30nKSkudG8gYmUgdHJ1
+ZQogIGVuZAogIAogIGl0ICduZXN0ZWRfYmFsYW5jZWRfYnJhY2tldHMnIGRv
+CiAgICAjIEZhaWx1cmUgbWVzc2FnZTogCiAgICAjIE1ldGhvZCBjYWxsZWQ6
+IGJhbGFuY2VkX2JyYWNrZXRzPygnWyh7fXt9e30pKFtdKV0nKQogICAgZXhw
+ZWN0KGJhbGFuY2VkX2JyYWNrZXRzPygnWyh7fXt9e30pKFtdKV0nKSkudG8g
+YmUgdHJ1ZQogIGVuZAoKICBpdCAndW5iYWxhbmNlZF93aXRoX25vX2Nsb3Np
+bmcnIGRvCiAgICAjIEZhaWx1cmUgbWVzc2FnZTogCiAgICAjIE1ldGhvZCBj
+YWxsZWQ6IGJhbGFuY2VkX2JyYWNrZXRzPygnKGhlbGxvJykKICAgIGV4cGVj
+dChiYWxhbmNlZF9icmFja2V0cz8oJyhoZWxsbycpKS50byBiZSBmYWxzZQog
+IGVuZAoKICBpdCAndW5iYWxhbmNlZF9pbmNvcnJlY3RfbmVzdGluZycgZG8K
+ICAgICMgRmFpbHVyZSBtZXNzYWdlOiAKICAgICMgTWV0aG9kIGNhbGxlZDog
+YmFsYW5jZWRfYnJhY2tldHM/KCcoWyldJykKICAgIGV4cGVjdChiYWxhbmNl
+ZF9icmFja2V0cz8oJyhbKV0nKSkudG8gYmUgZmFsc2UKICBlbmQKCiAgaXQg
+J3VuYmFsYW5jZWRfY2xvc2luZ19iZWZvcmVfb3BlbmluZycgZG8KICAgICMg
+RmFpbHVyZSBtZXNzYWdlOiAKICAgICMgTWV0aG9kIGNhbGxlZDogYmFsYW5j
+ZWRfYnJhY2tldHM/KCcpKCcpCiAgICBleHBlY3QoYmFsYW5jZWRfYnJhY2tl
+dHM/KCcpKCcpKS50byBiZSBmYWxzZQogIGVuZAogIAplbmQK
+"
 
-  it 'unbalanced_incorrect_nesting' do
-    # Failure message: 
-    # Method called: balanced_brackets?('([)]')
-    expect(balanced_brackets?('([)]')).to be false
-  end
+data = Base64.decode64(encoded_data)
 
-  it 'unbalanced_closing_before_opening' do
-    # Failure message: 
-    # Method called: balanced_brackets?(')(')
-    expect(balanced_brackets?(')(')).to be false
-  end
-  
-end
+eval(data)
