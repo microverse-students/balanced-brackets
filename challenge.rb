@@ -6,8 +6,8 @@ def balanced_brackets?(string)
     else
         stack = []
         bracket_sets = {
-            '{' => '}', 
-            '[' => ']', 
+            '{' => '}',
+            '[' => ']',
             '(' => ')'
         }
         string.chars do |bracket|
@@ -19,9 +19,6 @@ def balanced_brackets?(string)
         end
     end
     stack.empty?
-end
-
-puts balanced_brackets?('{}()[]')
 end
 
 puts balanced_brackets?('(hello)[world]')
